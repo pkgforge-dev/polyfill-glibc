@@ -1157,11 +1157,12 @@ static void erwNNE_(relocs_flush)(erw_state_t* erw) {
 static uint32_t erwNNE_(symbol_count_from_gnu_hash)(erw_state_t* erw, uint64_t v) {
   uint32_t meta[4];
   materialise_v_range_to(erw, v, sizeof(meta), (char*)meta);
-  v += sizeof(meta);
-  v += Elf_bswapu32(meta[2]) * sizeof(Elf_uNN);
-  uint64_t vend = v + Elf_bswapu32(meta[0]) * 4;
+  v += sizeof(meta); // Advance over the header words.
+  v += Elf_bswapu32(meta[2]) * sizeof(Elf_uNN); // Advance over the bloom filter.
+  uint64_t vend = v + Elf_bswapu32(meta[0]) * 4; // End of the hash bucket array.
   uint32_t max_word = 0;
   if (v < vend) {
+    // Find the maximum value in the hash bucket array.
     v2f_entry_t* e = v2f_map_lookup(&erw->v2f, v);
     do {
       if (e->v2f & V2F_SPECIAL) {
@@ -1180,6 +1181,7 @@ static uint32_t erwNNE_(symbol_count_from_gnu_hash)(erw_state_t* erw, uint64_t v
     } while (v < vend);
   }
   if (max_word) {
+    // Then walk the chain until we find an entry with the low bit set.
     v = vend + (max_word - Elf_bswapu32(meta[1])) * 4;
     v2f_entry_t* e = v2f_map_lookup(&erw->v2f, v);
     for (;;) {
@@ -1746,7 +1748,8 @@ static void erwNNE_(rebuild_gnu_hash)(erw_state_t* erw) {
   if (v) {
     uint32_t meta[4];
     materialise_v_range_to(erw, v, sizeof(meta), (char*)meta);
-    uint32_t old_u32_count = 4ull + Elf_bswapu32(meta[2]) * (sizeof(Elf_uNN) / sizeof(uint32_t)) + Elf_bswapu32(meta[0]) + (erw->dsyms.original_gnu_hash_count - Elf_bswapu32(meta[1]));
+    uint32_t old_arr_count = u32_sub_saturating(erw->dsyms.original_gnu_hash_count, Elf_bswapu32(meta[1]));
+    uint32_t old_u32_count = 4ull + Elf_bswapu32(meta[2]) * (sizeof(Elf_uNN) / sizeof(uint32_t)) + Elf_bswapu32(meta[0]) + old_arr_count;
     if (old_u32_count >= new_u32_count) {
       n_bucket += (old_u32_count - new_u32_count);
       goto got_v;

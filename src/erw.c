@@ -354,6 +354,10 @@ static void verneed_sweep_removed_refs(erw_state_t* erw, ver_group_t* g) {
   }
 }
 
+static uint32_t u32_sub_saturating(uint32_t lhs, uint32_t rhs) {
+  return lhs >= rhs ? lhs - rhs : 0u;
+}
+
 static const char* trim_leading_underscore(const char* str) {
   while (*str == '_') ++str;
   return str;
