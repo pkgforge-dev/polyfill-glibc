@@ -113,7 +113,7 @@ dt_loop:
   mov rax, qword ptr [rsp + 96]  // DT_INIT
   mov r14, qword ptr [rsp + 200] // DT_INIT_ARRAY
   mov r15, qword ptr [rsp + 216] // DT_INIT_ARRAYSZ
-  add rsp, 232   // No longer need this memory.
+  add rsp, 224   // No longer need this memory, other than 8 bytes to align the stack.
   test r14, r14
   cmovz r15, r14 // Replace DT_INIT_ARRAYSZ with 0 if DT_INIT_ARRAY was NULL.
   add r14, rdx   // Add load bias to DT_INIT_ARRAY.
@@ -127,7 +127,7 @@ dt_loop:
   mov edi, ebx
   mov rsi, r12
   mov rdx, r13
-  lea rcx, [rbp - 40]
+  lea rcx, [rbp - 48]
   sub rcx, rsp
   jnz tripwire // Make life harder for gadgets.
   call rax
@@ -142,7 +142,7 @@ dt_init_array_loop:
   mov edi, ebx
   mov rsi, r12
   mov rdx, r13
-  lea rcx, [rbp - 40]
+  lea rcx, [rbp - 48]
   sub rcx, rsp
   jnz tripwire // Make life harder for gadgets.
   call rax
@@ -151,6 +151,7 @@ dt_init_array_loop:
 done_dt_init_array:
 
   // Cleanup.
+  add rsp, 8
   pop.cfi r15
   pop.cfi r14
   pop.cfi r13
