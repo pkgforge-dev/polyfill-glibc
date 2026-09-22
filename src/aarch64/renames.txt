@@ -1058,6 +1058,29 @@ __isoc23_vsscanf@GLIBC_2.38 __isoc99_vsscanf@GLIBC_2.17
 __isoc23_vswscanf@GLIBC_2.38 __isoc99_vswscanf@GLIBC_2.17
 __isoc23_vwscanf@GLIBC_2.38 __isoc99_vwscanf@GLIBC_2.17
 __isoc23_wscanf@GLIBC_2.38 __isoc99_wscanf@GLIBC_2.17
+// The C23 strto*/wcsto* functions are not polyfilled on aarch64, so map them to
+// their C99 equivalents. The only behavioural difference is that the 0b/0B
+// prefix is no longer recognised when base is 0 or 2.
+__isoc23_strtoimax@GLIBC_2.38 strtoimax@GLIBC_2.17
+__isoc23_strtol@GLIBC_2.38 strtol@GLIBC_2.17
+__isoc23_strtol_l@GLIBC_2.38 strtol_l@GLIBC_2.17
+__isoc23_strtoll@GLIBC_2.38 strtoll@GLIBC_2.17
+__isoc23_strtoll_l@GLIBC_2.38 strtoll_l@GLIBC_2.17
+__isoc23_strtoul@GLIBC_2.38 strtoul@GLIBC_2.17
+__isoc23_strtoul_l@GLIBC_2.38 strtoul_l@GLIBC_2.17
+__isoc23_strtoull@GLIBC_2.38 strtoull@GLIBC_2.17
+__isoc23_strtoull_l@GLIBC_2.38 strtoull_l@GLIBC_2.17
+__isoc23_strtoumax@GLIBC_2.38 strtoumax@GLIBC_2.17
+__isoc23_wcstoimax@GLIBC_2.38 wcstoimax@GLIBC_2.17
+__isoc23_wcstol@GLIBC_2.38 wcstol@GLIBC_2.17
+__isoc23_wcstol_l@GLIBC_2.38 wcstol_l@GLIBC_2.17
+__isoc23_wcstoll@GLIBC_2.38 wcstoll@GLIBC_2.17
+__isoc23_wcstoll_l@GLIBC_2.38 wcstoll_l@GLIBC_2.17
+__isoc23_wcstoul@GLIBC_2.38 wcstoul@GLIBC_2.17
+__isoc23_wcstoul_l@GLIBC_2.38 wcstoul_l@GLIBC_2.17
+__isoc23_wcstoull@GLIBC_2.38 wcstoull@GLIBC_2.17
+__isoc23_wcstoull_l@GLIBC_2.38 wcstoull_l@GLIBC_2.17
+__isoc23_wcstoumax@GLIBC_2.38 wcstoumax@GLIBC_2.17
 strlcat@GLIBC_2.38 polyfill::strlcat
 __strlcat_chk@GLIBC_2.38 polyfill::__strlcat_chk
 strlcpy@GLIBC_2.38 polyfill::strlcpy
