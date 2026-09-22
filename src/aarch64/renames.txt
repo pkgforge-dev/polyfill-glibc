@@ -1149,3 +1149,27 @@ stdc_trailing_zeros_ull@GLIBC_2.39 polyfill::stdc_trailing_zeros_ul
 stdc_trailing_zeros_us@GLIBC_2.39 polyfill::stdc_trailing_zeros_us
 // libm
 exp10@GLIBC_2.39 exp10
+
+// GLIBC_2.43
+// libm
+acosf@GLIBC_2.43 acosf@GLIBC_2.17
+acoshf@GLIBC_2.43 acoshf@GLIBC_2.17
+asinf@GLIBC_2.43 asinf@GLIBC_2.17
+atan2f@GLIBC_2.43 atan2f@GLIBC_2.17
+atanhf@GLIBC_2.43 atanhf@GLIBC_2.17
+coshf@GLIBC_2.43 coshf@GLIBC_2.17
+j0f@GLIBC_2.43 j0f@GLIBC_2.17
+j1f@GLIBC_2.43 j1f@GLIBC_2.17
+jnf@GLIBC_2.43 jnf@GLIBC_2.17
+lgammaf@GLIBC_2.43 lgammaf@GLIBC_2.23
+log10f@GLIBC_2.43 log10f@GLIBC_2.17
+remainder@GLIBC_2.43 remainder@GLIBC_2.17
+remainderf@GLIBC_2.43 remainderf@GLIBC_2.17
+sinhf@GLIBC_2.43 sinhf@GLIBC_2.17
+sqrtf@GLIBC_2.43 sqrtf@GLIBC_2.17
+tgammaf@GLIBC_2.43 tgammaf@GLIBC_2.17
+
+// GLIBC_2.44
+// libm
+cosh@GLIBC_2.44 cosh@GLIBC_2.17
+sinh@GLIBC_2.44 sinh@GLIBC_2.17
