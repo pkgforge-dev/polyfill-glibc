@@ -1162,11 +1162,15 @@ j0f@GLIBC_2.43 j0f@GLIBC_2.17
 j1f@GLIBC_2.43 j1f@GLIBC_2.17
 jnf@GLIBC_2.43 jnf@GLIBC_2.17
 lgammaf@GLIBC_2.43 lgammaf@GLIBC_2.23
+lgammaf_r@GLIBC_2.43 lgammaf_r@GLIBC_2.17
 log10f@GLIBC_2.43 log10f@GLIBC_2.17
 remainder@GLIBC_2.43 remainder@GLIBC_2.17
 remainderf@GLIBC_2.43 remainderf@GLIBC_2.17
 sinhf@GLIBC_2.43 sinhf@GLIBC_2.17
 sqrtf@GLIBC_2.43 sqrtf@GLIBC_2.17
+y0f@GLIBC_2.43 y0f@GLIBC_2.17
+y1f@GLIBC_2.43 y1f@GLIBC_2.17
+ynf@GLIBC_2.43 ynf@GLIBC_2.17
 tgammaf@GLIBC_2.43 tgammaf@GLIBC_2.17
 
 // GLIBC_2.44
