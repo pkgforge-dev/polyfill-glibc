@@ -1058,9 +1058,9 @@ __isoc23_vsscanf@GLIBC_2.38 __isoc99_vsscanf@GLIBC_2.17
 __isoc23_vswscanf@GLIBC_2.38 __isoc99_vswscanf@GLIBC_2.17
 __isoc23_vwscanf@GLIBC_2.38 __isoc99_vwscanf@GLIBC_2.17
 __isoc23_wscanf@GLIBC_2.38 __isoc99_wscanf@GLIBC_2.17
-// The C23 strto* functions are not polyfilled on aarch64, so map them to their
-// C99 equivalents. The only behavioural difference is that the 0b/0B prefix is
-// no longer recognised by strtol/strtoul when base is 0 or 2.
+// The C23 strto*/wcsto* functions are not polyfilled on aarch64, so map them to
+// their C99 equivalents. The only behavioural difference is that the 0b/0B
+// prefix is no longer recognised when base is 0 or 2.
 __isoc23_strtoimax@GLIBC_2.38 strtoimax@GLIBC_2.17
 __isoc23_strtol@GLIBC_2.38 strtol@GLIBC_2.17
 __isoc23_strtol_l@GLIBC_2.38 strtol_l@GLIBC_2.17
